@@ -9,7 +9,11 @@ import { getAuth, signInWithEmailAndPassword } from '@angular/fire/auth';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [NavBarComponent,InputCustomComponent,ReactiveFormsModule,CommonModule,ButtonCustomComponent],
+  imports: [NavBarComponent,
+    InputCustomComponent,
+    ReactiveFormsModule,
+    CommonModule,
+    ButtonCustomComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
