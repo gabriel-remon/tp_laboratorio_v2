@@ -4,7 +4,7 @@ import { InputCustomComponent } from '../../shared/components/input-custom/input
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ButtonCustomComponent } from '../../shared/components/button-custom/button-custom.component';
-import { getAuth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-login',
@@ -23,10 +23,12 @@ export class LoginComponent {
     password: new FormControl('',[Validators.required,Validators.minLength(5)]),
   })
 
+  constructor(public auth: Auth) {}
+
+ 
   submitLogin(){
-    const auth = getAuth()
     //const res = this.localStorage.login(this.formLogin.value)?"usuario logeado":"no se encontro el usuario"
-    signInWithEmailAndPassword(auth,this.formLogin.value.email!,this.formLogin.value.password!).then(res=>{
+    signInWithEmailAndPassword(this.auth,this.formLogin.value.email!,this.formLogin.value.password!).then(res=>{
       console.log(res)
     }).catch(err=>{
       console.log(err)

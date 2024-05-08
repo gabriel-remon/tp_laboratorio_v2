@@ -78,7 +78,7 @@
 }
 
 .login-register {
-    font-size: .9em;
+    font-size: 14px;
     color: #e4e8eb;
     text-align: center;
     font-weight: 500;
@@ -95,7 +95,6 @@
     text-decoration: underline;
     ;
 }
-
 
 .hide {
     display: none;
