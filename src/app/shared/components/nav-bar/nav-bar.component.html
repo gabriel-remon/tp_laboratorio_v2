@@ -1,20 +1,21 @@
 <header class="header">
     <div class="conteiner">
         
-        <div class="logo">
-            <h1>RemonApp</h1>
+        <div class="logo" (click)="goto('')">
+            <h1>Sala juegos</h1>
         </div>
 
         <div class="boton">
-            <label for="btn-menu">menu</label>
+            <label for="btn-menu">Menu</label>
         </div>
 
         <input type="checkbox" id="btn-menu">
-        <nav class="menu">
-            <a>home</a>
-            <a>sobre mi</a>
-            <a>chat</a>
-            <a>login</a>
+        <nav class="menu" >
+            <a (click)="goto('')" >Home</a>
+            <a (click)="goto('aboutme')">Sobre mi</a>
+            <a [class.hide]="!userLogin" (click)="goto('chat')">Chat</a>
+            <a [class.hide]="userLogin"  (click)="goto('auth/login')">Login</a>
+            <a [class.hide]="!userLogin" (click)="logout()">Logout</a>
         </nav>
     </div>
 </header>

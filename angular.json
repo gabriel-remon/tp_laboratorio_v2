@@ -25,6 +25,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
               "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.css"
             ],
@@ -91,11 +92,29 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/ngx-spinner/animations/ball-scale-multiple.css",
               "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.css"
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "sala-juegos:build:production",
+              "serveTarget": "sala-juegos:serve:production"
+            },
+            "development": {
+              "buildTarget": "sala-juegos:build:development",
+              "serveTarget": "sala-juegos:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

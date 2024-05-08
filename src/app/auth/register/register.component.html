@@ -1,1 +1,53 @@
-<p>register works!</p>
+<app-nav-bar></app-nav-bar>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-scale-multiple" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
+<div class="wrapper" >
+    <div class="form-box login">
+        <h2>Registro</h2>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+
+            <app-input-custom
+                text=Nombre
+                type=text
+                [control]="form.controls.name"
+            ></app-input-custom>
+
+            <div class="remember-forgot" [class.hide]="!form.get('name')?.touched">
+                <label *ngIf="form.controls.name.getError('required')">Nombre requerido</label>>
+            </div>
+
+            <app-input-custom
+                text=Email
+                type=text
+                [control]="form.controls.email"
+            ></app-input-custom>
+
+            <div class="remember-forgot" [class.hide]="!form.get('email')?.touched">
+                <label *ngIf="form.controls.email.getError('required')">email requerido</label>
+                <label *ngIf="form.controls.email.getError('email')">email no valido</label>
+            </div>
+
+            <app-input-custom
+                text=Contraseña
+                type=password
+                [control]="form.controls.password"
+            ></app-input-custom>
+
+            <div class="remember-forgot" [class.hide]="!form.get('password')?.touched">
+                <label *ngIf="form.controls.password.getError('required')">password requerido</label>
+                <label *ngIf="form.controls.password.getError('minlength')">debe contener al menos 5 caracteres</label>
+            </div>
+            
+            <app-button-custom
+            type="submit"
+            [disabled]="!form.valid"
+            text="Login"
+            ></app-button-custom>
+
+            <div class="login-register">
+                <p>¿Ya tienes una cuenta? <a class="register-link" (click)="goto('auth/login')" >Inicia secion</a></p>
+            </div>
+        
+        </form>
+    </div>
+</div>

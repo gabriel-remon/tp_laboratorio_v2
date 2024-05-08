@@ -1,7 +1,7 @@
 .wrapper {
     position: relative;
     width: 400px;
-    height: 460px;
+    height: 520px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
@@ -98,4 +98,13 @@
 
 .hide {
     display: none;
+}
+.acceso-rapido{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.btn{
+    margin: 11px 12px 13px 14px;
 }

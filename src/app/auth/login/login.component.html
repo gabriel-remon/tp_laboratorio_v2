@@ -1,43 +1,41 @@
 <app-nav-bar></app-nav-bar>
-
-<div class="wrapper" >
-
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-scale-multiple" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
+<div class="wrapper">
     <div class="form-box login">
         <h2>Login</h2>
         <form [formGroup]="formLogin" (ngSubmit)="submitLogin()">
 
-            <app-input-custom
-                text=Email
-                type=text
-                [control]="formLogin.controls.email"
-            ></app-input-custom>
+            <app-input-custom text=Email type=text [control]="formLogin.controls.email"></app-input-custom>
 
             <div class="remember-forgot" [class.hide]="!formLogin.get('email')?.touched">
                 <label *ngIf="formLogin.controls.email.getError('required')">email requerido</label>
                 <label *ngIf="formLogin.controls.email.getError('email')">email no valido</label>
             </div>
 
-            <app-input-custom
-                text=Contraseña
-                type=password
-                [control]="formLogin.controls.password"
-            ></app-input-custom>
+            <app-input-custom text=Contraseña type=password [control]="formLogin.controls.password"></app-input-custom>
 
             <div class="remember-forgot" [class.hide]="!formLogin.get('password')?.touched">
                 <label *ngIf="formLogin.controls.password.getError('required')">password requerido</label>
-                <label *ngIf="formLogin.controls.password.getError('minlength')">debe contener al menos 5 caracteres</label>
+                <label *ngIf="formLogin.controls.password.getError('minlength')">debe contener al menos 5
+                    caracteres</label>
             </div>
-            
-            <app-button-custom
-            type="submit"
-            [disabled]="!formLogin.valid"
-            text="Login"
-            ></app-button-custom>
+
+            <app-button-custom type="submit" [disabled]="!formLogin.valid" text="Login"></app-button-custom>
 
             <div class="login-register">
-                <p>¿No eres miembro todavía? <a class="register-link">Registrate aqui</a></p>
+                <p>¿No eres miembro todavía? <a class="register-link" (click)="goto('auth/register')">Registrate
+                        aqui</a></p>
             </div>
-        
+
+            
+            
         </form>
+        <div class="acceso-rapido">
+            <app-button-custom text="Usuario 1" (click)="accesoRapido('admin@gmail.com','123456')" class="btn"></app-button-custom>
+            <app-button-custom text="Usuario 2" (click)="accesoRapido('admin@gmail.com','123456')" class="btn"></app-button-custom>
+            <app-button-custom text="Usuario 2" (click)="accesoRapido('admin@gmail.com','123456')" class="btn"></app-button-custom>
+        </div>
     </div>
 </div>
