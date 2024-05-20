@@ -62,14 +62,14 @@ strong{
 
 .home-img{
     margin-left: 10px;
-    max-width: 450px;
+    max-width: 750px;
     opacity:0 ;
     animation: zoomIn 1s ease forwards, floatImage 4s
     ease-in-out infinite;
     animation-delay: 2s, 3s;
 }
 img{
-    width: 350px;
+    width: 750px;
     height: auto;
     border-radius: 20%;
 }

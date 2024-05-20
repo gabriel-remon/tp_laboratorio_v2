@@ -1,10 +1,12 @@
 
 import { Injectable, inject, OnInit } from '@angular/core';
-import { Auth, signInWithEmailAndPassword ,onAuthStateChanged, createUserWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword ,onAuthStateChanged, createUserWithEmailAndPassword, getAuth, Unsubscribe } from '@angular/fire/auth';
 import { UtilsService } from './utils.service';
 import { User } from '../models/user.model';
 import { DataFirebaseService } from './data.firebase.service';
 import { ToastrService } from 'ngx-toastr';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Observable, Subject, Subscription } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +18,47 @@ export class AuthFirebaseService  {
     userLogin:boolean=false;
     user:any;
 
-  constructor(public auth: Auth,private toast:ToastrService) { 
-    
+  /*constructor(public auth: Auth,private toast:ToastrService) { 
+    onAuthStateChanged(getAuth(),(user)=>{
+      if(user){
+        this.user=user
+        console.log("bienvenido")
+      }else{
+        console.log("el usuairo no esta logueado")
+      }
+    })
+  }*/
+
+
+  private userSubject = new Subject<any>(); // Subject to store the user state
+  user$: Observable<any>;
+  private unsubscribeSubscription: Unsubscribe  | undefined;
+
+  constructor(public auth: Auth, private toast: ToastrService) {
+    this.user$ = this.userSubject.asObservable(); // Make user data observable
+
+    this.unsubscribeSubscription = onAuthStateChanged(this.auth,
+      (user) => {
+        if (user) {
+          this.userSubject.next(user); 
+          console.log("Bienvenido");
+        } else {
+          this.userSubject.next(null); 
+          console.log("El usuario no está logueado");
+        }
+      },
+      (error) => {
+        // Handle errors (optional)
+        console.error('Error al obtener el estado de autenticación:', error);
+      }
+    );
   }
+/*
+  ngOnDestroy(): void {
+    if (this.unsubscribeSubscription) {
+      this.unsubscribeSubscription.unsubscribe(); // Unsubscribe on destroy
+    }
+  }*/
 
 
 

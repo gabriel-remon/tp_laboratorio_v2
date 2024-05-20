@@ -1,6 +1,6 @@
 export interface MensajeChat{
     _uid:string,
     name:string,
-    fecha:Date,
+    fecha:string,
     mensaje:string
 }
