@@ -46,7 +46,8 @@ transform: translateY(60px);
 .mazo img:nth-child(13):hover{transform: rotate(60deg) translateY(-150px);}
 
 .cartaSeleccionada{
-    transform: perspective(500px) rotateY(180deg) scale(1.5);
+    width: 250px;
+    transform: perspective(500px) rotateY(180deg);
     z-index: 9999
 }
 .ocultarCarta{

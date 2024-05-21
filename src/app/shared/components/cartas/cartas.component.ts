@@ -13,6 +13,8 @@ export class CartasComponent {
   cartasActuales:number=48;
   cartaAnterior:any;
   cartasHtml:any;
+  CartaSeleccionada:string ="";
+  cartaSeleccionadaHtml:any
   cartas=[
     [1,2,3,4,5,6,7,8,9,10,11,12], //espada
     [1,2,3,4,5,6,7,8,9,10,11,12], //basto
@@ -90,5 +92,10 @@ export class CartasComponent {
     if(this.cartasActuales == 3)this.cartasHtml[5].classList.add('hide')
     if(this.cartasActuales == 2)this.cartasHtml[7].classList.add('hide')
     if(this.cartasActuales == 1)this.cartasHtml[6].classList.add('hide')
+  }
+
+  mostrarCarta(mazo:string,carta:number){
+    this.CartaSeleccionada="assets/"+mazo+"."+carta+".png";
+
   }
 }
