@@ -1,0 +1,54 @@
+.mazo{
+position: relative;
+width: 150px;
+height: 0;
+transform: translateY(60px);
+}
+.mazo img{
+    position: absolute;
+    width: 150px;
+    height: auto;
+    transition: 1s;
+    transform-origin: bottom center;
+    cursor: grab;
+}
+
+.hide{
+    visibility: hidden;
+}
+
+.mazo  img:nth-child(1){transform: rotate(-60deg) translateY(-60px);}
+.mazo  img:nth-child(2){transform: rotate(-50deg) translateY(-60px);}
+.mazo  img:nth-child(3){transform: rotate(-40deg) translateY(-60px);}
+.mazo  img:nth-child(4){transform: rotate(-30deg) translateY(-60px);}
+.mazo  img:nth-child(5){transform: rotate(-20deg) translateY(-60px);}
+.mazo  img:nth-child(6){transform: rotate(-10deg) translateY(-60px);}
+.mazo  img:nth-child(7){transform: rotate(0deg)   translateY(-60px);}
+.mazo  img:nth-child(8){transform: rotate(10deg)  translateY(-60px);}
+.mazo  img:nth-child(9){transform: rotate(20deg)  translateY(-60px);}
+.mazo img:nth-child(10){transform: rotate(30deg)  translateY(-60px);}
+.mazo img:nth-child(11){transform: rotate(40deg)  translateY(-60px);}
+.mazo img:nth-child(12){transform: rotate(50deg)  translateY(-60px);}
+.mazo img:nth-child(13){transform: rotate(60deg)  translateY(-60px);}
+
+.mazo img:nth-child(1):hover{ transform: rotate(-60deg) translateY(-150px);}
+.mazo img:nth-child(2):hover{ transform: rotate(-50deg) translateY(-150px);}
+.mazo img:nth-child(3):hover{ transform: rotate(-40deg) translateY(-150px);}
+.mazo img:nth-child(4):hover{ transform: rotate(-30deg) translateY(-150px);}
+.mazo img:nth-child(5):hover{ transform: rotate(-20deg) translateY(-150px);}
+.mazo img:nth-child(6):hover{ transform: rotate(-10deg) translateY(-150px);}
+.mazo img:nth-child(7):hover{ transform: rotate(0deg)   translateY(-150px);}
+.mazo img:nth-child(8):hover{ transform: rotate(10deg)  translateY(-150px);}
+.mazo img:nth-child(9):hover{ transform: rotate(20deg)  translateY(-150px);}
+.mazo img:nth-child(10):hover{transform: rotate(30deg) translateY(-150px);}
+.mazo img:nth-child(11):hover{transform: rotate(40deg) translateY(-150px);}
+.mazo img:nth-child(12):hover{transform: rotate(50deg) translateY(-150px);}
+.mazo img:nth-child(13):hover{transform: rotate(60deg) translateY(-150px);}
+
+.cartaSeleccionada{
+    transform: perspective(500px) rotateY(180deg) scale(1.5);
+    z-index: 9999
+}
+.ocultarCarta{
+    display: none;
+}

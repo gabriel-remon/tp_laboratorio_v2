@@ -7,7 +7,7 @@ import { ButtonCustomComponent } from '../../shared/components/button-custom/but
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { UtilsService } from '../../core/services/utils.service';
 import { AuthFirebaseService } from '../../core/services/auth.firebase.service';
-import { User } from '../../core/models/user.model';
+import { UserModel } from '../../core/models/user.model';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -44,7 +44,7 @@ export class RegisterComponent {
       email:this.form.value.email
     }
     this.spinner.show();
-    await this.authFire.register(user as User,this.form.value.password!,()=>{
+    await this.authFire.register(user as UserModel,this.form.value.password!,()=>{
       this.utilSvc.goto('')
       this.toast.success("usuario logueado con exito","Bienvenido")
     });

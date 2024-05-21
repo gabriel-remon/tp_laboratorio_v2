@@ -44,6 +44,7 @@ export class LoginComponent {
     await this.authFirebase.login(this.formLogin.value.email!,this.formLogin.value.password!,()=>{
       this.utilSvc.goto('')
       this.toast.success("usuario logueado con exito","Bienvenido")
+    
     })
     
     this.spinner.hide();

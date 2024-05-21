@@ -1,5 +1,5 @@
 import { MatIconModule } from '@angular/material/icon';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -14,4 +14,24 @@ export class InputCustomComponent {
   @Input() icon!:string;
   @Input() type!:string;
   @Input() control!:FormControl;
+
+  ngOnInit(){
+    if(this.type=="password"){
+      this.icon="lock"
+    }
+    if(!this.icon){
+      this.icon="people"
+    }
+  }
+  viewPassword(){
+    if(this.icon == "lock"){
+      this.icon = "lock_open"
+      this.type="text"
+    }else if(this.icon == "lock_open"){
+      this.icon = "lock"
+      this.type="password"
+    }
+
+  
+  }
 }

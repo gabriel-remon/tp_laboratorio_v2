@@ -12,6 +12,7 @@ import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { provideToastr } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,5 +24,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(provideAuth(() => getAuth())), 
     importProvidersFrom(provideDatabase(() => getDatabase())),
     importProvidersFrom(provideFirestore(() => getFirestore())),
+
+    provideHttpClient(withFetch())
   ]
 };

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NavBarComponent } from '../../shared/components/nav-bar/nav-bar.component';
 import { InputCustomComponent } from '../../shared/components/input-custom/input-custom.component';
 import { IngresoJuegoComponent } from '../../shared/components/ingreso-juego/ingreso-juego.component';
+import { UtilsService } from '../../core/services/utils.service';
 
 @Component({
   selector: 'app-main',
@@ -21,5 +22,9 @@ export class MainComponent {
   linkJuego4="./assets/juego.jpg"
   textJuego4="P.P.T.L.S.";
 
-
+  utislSvc = inject(UtilsService)
+  
+  goto(path: string) {
+    this.utislSvc.goto(path)
+  }
 }

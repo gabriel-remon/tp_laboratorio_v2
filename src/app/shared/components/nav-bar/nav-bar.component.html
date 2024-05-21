@@ -9,13 +9,13 @@
             <label for="btn-menu">Menu</label>
         </div>
 
-        <input type="checkbox" id="btn-menu">
+        <input type="checkbox" id="btn-menu"> 
         <nav class="menu" >
             <a (click)="goto('')" >Home</a>
             <a (click)="goto('aboutme')">Sobre mi</a>
-            <a [class.hide]="!userLogin" (click)="goto('chat')">Chat</a>
-            <a [class.hide]="userLogin"  (click)="goto('auth/login')">Login</a>
-            <a [class.hide]="!userLogin" (click)="logout()">Logout</a>
+            <a *ngIf="user" (click)="goto('chat')">Chat</a>
+            <a *ngIf="!user"  (click)="goto('auth/login')">Login</a>
+            <a  *ngIf="user" (click)="logout()">Logout</a>
         </nav>
     </div>
 </header>

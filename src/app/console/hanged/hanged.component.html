@@ -1,1 +1,23 @@
-<p>hanged works!</p>
+<app-nav-bar></app-nav-bar>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-scale-multiple" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
+
+<div class="flex flex-row ">
+    <div class="flex flex-row  contenedorPalabras">
+        <div class="letra hide"></div>
+        <div class="letra hide"></div>
+        <div class="letra hide"></div>
+        <div class="letra hide"></div>
+        <div class="letra hide"></div>
+        <div class="letra hide"></div>
+        <div class="letra hide"></div>
+        <div class="letra hide"></div>
+    </div>
+
+    <div class="ahorcado"  >
+
+    </div>
+</div>
+
+<app-teclado (teclaPulsada)="intentarLetra($event)" id="teclado"></app-teclado>

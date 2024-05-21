@@ -11,4 +11,8 @@ export class UtilsService {
   goto(path : string){
     this.router.navigate([path]);
   }
+
+  reloadComponent() {
+    this.router.navigate;
+  }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore, addDoc, collection } from '@angular/fire/firestore';
-import { User } from '../models/user.model';
+import { UserModel } from '../models/user.model';
 import { getFirestore,setDoc,doc } from '@angular/fire/firestore';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class DataFirebaseService {
 
   constructor(private dbFirebase : Firestore) { }
 
-  addNewUser(user:User){
+  addNewUser(user:UserModel){
     addDoc(collection(getFirestore(),this.bdUsuarios),user).then(res=>{
       console.log(res)
     }).catch(err=>{

@@ -1,14 +1,17 @@
 <app-nav-bar></app-nav-bar>
 
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="ball-scale-multiple" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
 
 <div class="wrapper flex-col h-3/4 ">
-	<div class="flex-col h-6/8 otraclase">
+	<div class="flex-col h-6/8 otraclase" id="contenedorMensajes">
 
 		<div class="py-2 px-10 " *ngFor="let chat of chatsFirebase">
 			<div class="flex"
-			[ngClass]="{'flex-row-reverse':chat._uid===id_logueado}">
-				<div class= "transparente bg-white p-4 w-96 rounded-3xl" 
-				[ngClass]="{'rounded-br-none':chat._uid===id_logueado,'rounded-bl-none':chat._uid!==id_logueado}"
+			[ngClass]="{'flex-row-reverse':chat._uid==user.uid}">
+				<div class= "transparente bg-white p-4 w-96 rounded-3xl mensajes" 
+				[ngClass]="{'rounded-br-none':chat._uid==user.uid,'rounded-bl-none':chat._uid!=user.uid}"
 				>
 					<p class="mb-1 text-white ">{{chat.name}}</p>
 					<small class="text-white font-light">

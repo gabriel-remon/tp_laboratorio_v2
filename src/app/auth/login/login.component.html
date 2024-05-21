@@ -7,14 +7,14 @@
         <h2>Login</h2>
         <form [formGroup]="formLogin" (ngSubmit)="submitLogin()">
 
-            <app-input-custom text=Email type=text [control]="formLogin.controls.email"></app-input-custom>
+            <app-input-custom text=Email type=text [control]="formLogin.controls.email" icon="email"></app-input-custom>
 
             <div class="remember-forgot" [class.hide]="!formLogin.get('email')?.touched">
                 <label *ngIf="formLogin.controls.email.getError('required')">email requerido</label>
                 <label *ngIf="formLogin.controls.email.getError('email')">email no valido</label>
             </div>
 
-            <app-input-custom text=Contraseña type=password [control]="formLogin.controls.password"></app-input-custom>
+            <app-input-custom text=Contraseña type=password [control]="formLogin.controls.password" ></app-input-custom>
 
             <div class="remember-forgot" [class.hide]="!formLogin.get('password')?.touched">
                 <label *ngIf="formLogin.controls.password.getError('required')">password requerido</label>
@@ -33,9 +33,9 @@
             
         </form>
         <div class="acceso-rapido">
-            <app-button-custom text="Usuario 1" (click)="accesoRapido('admin@gmail.com','123456')" class="btn"></app-button-custom>
-            <app-button-custom text="Usuario 2" (click)="accesoRapido('admin@gmail.com','123456')" class="btn"></app-button-custom>
-            <app-button-custom text="Usuario 2" (click)="accesoRapido('admin@gmail.com','123456')" class="btn"></app-button-custom>
+            <app-button-custom text="Usuario 1" (click)="accesoRapido('admin_juan@gmail.com','123456')" class="btn"></app-button-custom>
+            <app-button-custom text="Usuario 2" (click)="accesoRapido('admin_luis@gmail.com','123456')" class="btn"></app-button-custom>
+            <app-button-custom text="Usuario 2" (click)="accesoRapido('admin_jose@gmail.com','123456')" class="btn"></app-button-custom>
         </div>
     </div>
 </div>

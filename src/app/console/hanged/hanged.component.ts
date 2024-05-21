@@ -1,12 +1,99 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { NavBarComponent } from '../../shared/components/nav-bar/nav-bar.component';
+import { TecladoComponent } from '../../shared/components/teclado/teclado.component';
+import { HttpService } from '../../core/services/http.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-hanged',
   standalone: true,
-  imports: [],
+  imports: [NavBarComponent,TecladoComponent,ReactiveFormsModule,NgxSpinnerModule],
   templateUrl: './hanged.component.html',
   styleUrl: './hanged.component.css'
 })
 export class HangedComponent {
+
+  exitosos:number=0;
+incorrectos:number=0;
+palabra:string="";
+contenedorLetras:any=[];
+httpSvc = inject(HttpService)
+spinner = inject(NgxSpinnerService)
+
+  ngOnInit(): void {
+    this.spinner.show();
+    this.obtenerPalabra()
+    
+  }
+
+  obtenerPalabra(){
+    this.httpSvc.getRandomWord().subscribe((data)=>{
+      if(data && data[0].length >3 && data[0].length <9){
+        this.palabra=data[0].toUpperCase()
+        const normalizedText =  this.palabra.normalize("NFD");
+        this.palabra = normalizedText.replace(/[\u0300-\u036F]/g, "");
+        console.log(this.palabra)
+        this.spinner.hide();
+        this.mostrarContenedores()
+      }else{
+          this.obtenerPalabra()
+        }
+      
+    })}
+
+    mostrarContenedores(){
+      let contenedores =  document.getElementsByClassName('letra')
+      this.contenedorLetras = contenedores
+      for(let i=0;i<this.palabra.length;i++){
+        contenedores[i].classList.remove('hide')
+      }
+    }
+
+    intentarLetra(letra:string){
+      
+      if(this.palabra.includes(letra)){
+        let indices = []
+        let indice;
+        do{
+
+          indice=this.palabra.indexOf(letra)
+         
+          if(indice!==-1){
+            indices.push(indice)
+            this.palabra = this.palabra.substring(0,indice)+" "+this.palabra.substring(indice+1,this.palabra.length)
+          }
+        }while(indice!==-1)
+          this.agregarLetras(letra,indices)
+          this.exitosos++
+      }else{
+        this.incorrectos++
+      }
+      this.estadoJuego()
+    }
+
+    agregarLetras(letraIn:string,index:any){
+      for(let i=0;i<index.length;i++){
+        const letra=document.createElement('p')
+        letra.textContent= letraIn.toUpperCase()
+        letra.style.margin='0'
+        this.contenedorLetras[index[i]].appendChild(letra)
+
+      }
+    }
+
+    estadoJuego(){
+      if(this.incorrectos == 5){
+        document.getElementById('teclado')?.classList.add('hide')
+      }
+      if(this.palabra.trim().length==0){
+        document.getElementById('teclado')?.classList.add('hide')
+        //ganaste
+      }
+    }
+
+    dibujarAhorcado(){
+
+    }
 
 }

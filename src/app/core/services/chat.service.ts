@@ -32,19 +32,26 @@ export class ChatService {
     })
   }
 
-  getMensajes(funcion:(mensajes:MensajeChat[])=>void) {
+  getMensajes(funcion:(mensajes:MensajeChat[])=>void,finaly?:()=>void) {
     // Crear una consulta ordenada por el campo 'fecha' en orden ascendente
     const mensajeRef = collection(this.dbFirebase,this.dbMensajes)
     const q = query(mensajeRef,orderBy('fecha'))
     
-    return onSnapshot(q,(snapshot:QuerySnapshot)=>{
-      let mensajes :MensajeChat[] =[];
-      snapshot.forEach((doc:QueryDocumentSnapshot)=>{
-        let mensajeIn =  doc.data() as MensajeChat
-        mensajes.push( mensajeIn)
+    try{
+      return onSnapshot(q,(snapshot:QuerySnapshot)=>{
+        let mensajes :MensajeChat[] =[];
+        snapshot.forEach((doc:QueryDocumentSnapshot)=>{
+          let mensajeIn =  doc.data() as MensajeChat
+          mensajes.push( mensajeIn)
+        })
+        funcion(mensajes)
+        finaly?finaly():""
       })
-      funcion(mensajes)
-    })}
+    }catch(error){
+      finaly?finaly():""
+      return error
+    }
+  }
 /*
     const mensajesObservable: Observable<MensajeChat[]> = ().pipe(
       map(actions => actions.map(a => {
