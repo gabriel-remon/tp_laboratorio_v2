@@ -1,17 +1,23 @@
-<div  class="mazo" (click)="elegirCarta()">
-    <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
-    <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
-    <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
-    <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
-    <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
-    <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta" >
-    <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
-    <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
-    <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
-    <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
-    <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
-    <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
-    <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
+<div  class="mazo" *ngIf="!estadoElegida" id="mazo" (click)="elegirCarta()">
+    <div>
+        <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
+        <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
+        <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
+        <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
+        <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
+        <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta" >
+        <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
+        <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
+        <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
+        <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
+        <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
+        <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
+        <img src="./assets/cartas/tapa.png" alt="parte trasera de la carta">
+    </div>
     
-    <img src={{CartaSeleccionada}} alt="parte trasera de la carta" class="ocultarCarta" id="seleccion">
+</div>
+
+<div class="mazoAux" id="mazoSeleccion" *ngIf="estadoElegida">
+    <img src={{CartaSeleccionada}} alt="Carta seleccionada" class="cartaSeleccionada" id="seleccion">
+
 </div>

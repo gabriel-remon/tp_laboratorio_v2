@@ -1,0 +1,35 @@
+.tablero {
+    position: absolute;
+    margin-top: 50px;
+    right: 400px;
+    width: 700px;
+    height: 250px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: height 0.2s ease;
+    top: 35px;
+    color: aliceblue;
+}
+
+.botones{
+    width: 400px;
+}
+
+h3{
+    margin-bottom: 0;
+}
+
+p{
+    color: greenyellow;
+}
+
+.error{
+    color: red;
+}

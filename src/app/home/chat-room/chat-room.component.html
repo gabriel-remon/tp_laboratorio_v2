@@ -13,7 +13,7 @@
 				<div class= "transparente bg-white p-4 w-96 rounded-3xl mensajes" 
 				[ngClass]="{'rounded-br-none':chat._uid==user.uid,'rounded-bl-none':chat._uid!=user.uid}"
 				>
-					<p class="mb-1 text-white ">{{chat.name}}</p>
+					<p class="mb-1 text-white" *ngIf="chat._uid!==user.uid">{{chat.name}}</p>
 					<small class="text-white font-light">
 						{{chat.mensaje}}
 					</small>

@@ -1,2 +1,24 @@
 <app-nav-bar></app-nav-bar>
-<app-cartas></app-cartas>
+
+<div class="tablero flex-col" >
+    <h1> <strong>Mayor o menor</strong>, apueste por la proxima carta</h1>
+    
+    <div *ngIf="primeraApuesta">
+        <p *ngIf="estadoApuesta  && incorrectos!==0">Felicidades acerto</p>
+        <p class="error" *ngIf="!estadoApuesta && incorrectos!==0">Lo lamento perdio, le quedan <strong>{{incorrectos}}</strong> intentos</p>
+        <p class="error" *ngIf="incorrectos===0"><strong>Juego terminado</strong></p>
+    </div>
+
+    <div class="puntos">
+        <h3>Usted tiene : <strong>{{puntos}}</strong> puntos</h3>
+    </div>
+
+    <div class="botones" *ngIf="estadoTablero && incorrectos!==0">
+        
+            <app-button-custom text="Mayor" (click)="realizarApuesta(false)"></app-button-custom>
+            <app-button-custom text="Menor" (click)="realizarApuesta(true)"></app-button-custom>
+    </div>
+</div>
+
+
+<app-cartas (cartaElegida)="eleccionCarta($event)" [estadoElegida]="estadoElegida" *ngIf="!juegoTerminado"></app-cartas>

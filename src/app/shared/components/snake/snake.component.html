@@ -1,0 +1,16 @@
+<div id="board">
+    <ng-container *ngFor="let fila of cuadroId">
+        <ng-container *ngFor="let item of fila">
+            <div class="square emptySquare" id={{item}}></div>
+        </ng-container>
+    </ng-container>
+        
+    
+</div >
+<div class="boardInfo">
+    <div>
+        Score: <strong>{{score}}</strong> <div id="scoreBoard"></div>
+    </div>
+    <button id="start" (click)="startGame()" *ngIf="!estadoJuego" >Start</button>
+</div>
+<div id="gameOver">Game Over</div>
