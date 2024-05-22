@@ -20,7 +20,7 @@ export class MainComponent {
   linkJuego3="./assets/cartas.jpg"
   textJuego3="mayor o menor";
   linkJuego4="./assets/juego.jpg"
-  textJuego4="P.P.T.L.S.";
+  textJuego4="Snake";
 
   utislSvc = inject(UtilsService)
   

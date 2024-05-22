@@ -18,7 +18,7 @@ export class SnakeComponent {
   boardSize = 10;
   emptySquares: any = [];
   estadoJuego:boolean = false
-  inicioUnaVez:boolean=false
+  inicios:number = 0
 
   @HostListener('keydown', ['$event'])
   onKeyDown(event: KeyboardEvent) {
@@ -80,7 +80,7 @@ export class SnakeComponent {
   score: any;
   direction: any;
   boardSquares: any;
-  moveInterval: any;
+  moveInterval = Array(50);
 
   // --------------------aprobada por mi ---------------
   //dibuja la serpiente
@@ -184,8 +184,9 @@ export class SnakeComponent {
   //termina el juego
   gameOver = () => {
     //this.gameOverSign!.style.display = 'block'; //muestra que termino el juego
-    clearInterval(this.moveInterval)
+    clearInterval(this.moveInterval[this.inicios])
     this.estadoJuego=false
+    this.inicios++
     //this.startButton!.disabled = false; // habilita el boton de start
   }
 
@@ -234,9 +235,8 @@ export class SnakeComponent {
     this.estadoJuego= true
     this.drawSnake();
     this.createRandomFood();
-   this.moveInterval = setInterval(() => this.moveSnake(), this.gameSpeed);
-
-    this.inicioUnaVez=true
+    this.moveInterval[this.inicios] = setInterval(() => this.moveSnake(), this.gameSpeed);
+    console.log(this.moveInterval)
   }
 
 }
