@@ -153,7 +153,7 @@ export class SnakeComponent {
     const [row, column] = newSquare.split('');
 
 
-    if (newSquare.length < 0 ||
+    if (parseInt(newSquare) < 0 ||
       parseInt(newSquare) > this.boardSize * this.boardSize ||
       (this.direction === 'ArrowRight' && parseInt(column) == 0) ||
       (this.direction === 'ArrowLeft' && parseInt(column) == 9 ||
@@ -236,7 +236,6 @@ export class SnakeComponent {
     this.drawSnake();
     this.createRandomFood();
     this.moveInterval[this.inicios] = setInterval(() => this.moveSnake(), this.gameSpeed);
-    console.log(this.moveInterval)
   }
 
 }
