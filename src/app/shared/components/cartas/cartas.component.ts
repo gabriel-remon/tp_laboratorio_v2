@@ -49,9 +49,7 @@ export class CartasComponent {
     do{
       carta = Math.floor(Math.random() * (this.cartas[mazo].length-1));
     }while(this.cartas[mazo][carta]==this.cartaAnterior)
-      console.log(carta)
-      console.log("carta actual: "+this.cartas[mazo][carta])
-      console.log("carta anterior: "+this.cartaAnterior)
+
     this.cartasActuales--
   
     switch(mazo){

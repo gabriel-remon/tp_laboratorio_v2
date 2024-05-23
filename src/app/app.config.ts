@@ -18,7 +18,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes), 
     provideAnimationsAsync(),
-    provideToastr({timeOut:2000,preventDuplicates:true}),
+    provideToastr({timeOut:4000,preventDuplicates:true}),
     
     importProvidersFrom(provideFirebaseApp(() => initializeApp(environment.firebaseConfig))), 
     importProvidersFrom(provideAuth(() => getAuth())), 

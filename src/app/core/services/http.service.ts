@@ -11,7 +11,9 @@ export class HttpService {
 
   http  = inject(HttpClient)
   getRandomWord() {
-    return this.http.get('https://random-word-api.herokuapp.com/word?lang=es')
+    
+    return this.http.get('https://clientes.api.greenborn.com.ar/public-random-word')
+    //return this.http.get('https://random-word-api.herokuapp.com/word?lang=es')
       .pipe(
         map((data: any) => data),
         catchError(err => {

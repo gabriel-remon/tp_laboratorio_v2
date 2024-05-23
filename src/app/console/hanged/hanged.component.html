@@ -4,19 +4,27 @@
 </ngx-spinner>
 
 <div class="flex flex-row ">
-    <div class="flex flex-row  contenedorPalabras">
-        <div class="letra hide"></div>
-        <div class="letra hide"></div>
-        <div class="letra hide"></div>
-        <div class="letra hide"></div>
-        <div class="letra hide"></div>
-        <div class="letra hide"></div>
-        <div class="letra hide"></div>
-        <div class="letra hide"></div>
-    </div>
+
+        <div class="flex flex-col  contenedorPalabras">
+            <h2 >EL ahorcado</h2>
+            <div class="flex flex-row ">
+                <div class="letra hide"></div>
+                <div class="letra hide"></div>
+                <div class="letra hide"></div>
+                <div class="letra hide"></div>
+                <div class="letra hide"></div>
+                <div class="letra hide"></div>
+                <div class="letra hide"></div>
+                <div class="letra hide"></div>
+            </div>
+
+            <h3 >Su puntaje es: {{exitosos}}</h3>
+        </div>
+   
+
 
     <div class="ahorcado"  >
-
+        <img [src]="imagenAhorcado" alt="imagen del ahorcado">
     </div>
 </div>
 

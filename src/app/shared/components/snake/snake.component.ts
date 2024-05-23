@@ -20,15 +20,14 @@ export class SnakeComponent {
   estadoJuego:boolean = false
   inicios:number = 0
 
-  @HostListener('keydown', ['$event'])
-  onKeyDown(event: KeyboardEvent) {
-
-  }
-
+  
   ngOnInit(): void {
 
     document.addEventListener('keydown', (key)=>{
 
+      if(key.code == 'Enter'){
+        this.startGame()
+      }
       if(this.estadoJuego) {
         switch (key.code) {
           case 'ArrowUp':

@@ -105,7 +105,7 @@ export class AskedComponent {
       this.pregunta=null;
       this.opciones=[];
       this.srcImagen=null;
-    }, 2000);
+    }, 4000);
   }
 
   resetGame(){

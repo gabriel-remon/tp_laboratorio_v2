@@ -10,9 +10,10 @@
         <div class="contenedorPregunta">
             <h4>Tipo de pregunta: <strong>{{categoriaPregunta}}</strong></h4>
             <p>{{pregunta.pregunta}}</p>
-            <p *ngIf="!resultado && !jugando"><strong class="incorrecta">Respuesta incorrecta</strong></p>
+            <p *ngIf="!resultado && !jugando"><strong class="incorrecta">Respuesta incorrecta, la correcta es</strong></p>
+            <p *ngIf="!resultado && !jugando"><strong class="respuesta"> {{pregunta.correcta}}</strong></p>
             <p *ngIf="resultado && !jugando"><strong class="correcta">Respuesta correcta</strong></p>
-            <app-button-custom *ngFor="let item of opciones" [text]="item" (click)="responderPregunta(item)"  [disabled]="!jugando"></app-button-custom>
+            <app-button-custom *ngFor="let item of opciones" [text]="item" (click)="jugando && responderPregunta(item)"  [disabled]="!jugando"></app-button-custom>
         </div>
 
         <div class="imagenPregunta">

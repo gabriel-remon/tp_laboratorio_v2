@@ -20,11 +20,15 @@ palabra:string="";
 contenedorLetras:any=[];
 httpSvc = inject(HttpService)
 spinner = inject(NgxSpinnerService)
+letras:any;
+scrAhorcado:string ="assets/ahorcado/ahorcado"
+imagenAhorcado:string=this.scrAhorcado+".0.jpg";
+finJuego:boolean=false;
 
   ngOnInit(): void {
     this.spinner.show();
+
     this.obtenerPalabra()
-    
   }
 
   obtenerPalabra(){
@@ -33,8 +37,8 @@ spinner = inject(NgxSpinnerService)
         this.palabra=data[0].toUpperCase()
         const normalizedText =  this.palabra.normalize("NFD");
         this.palabra = normalizedText.replace(/[\u0300-\u036F]/g, "");
-        console.log(this.palabra)
         this.spinner.hide();
+
         this.mostrarContenedores()
       }else{
           this.obtenerPalabra()
@@ -52,7 +56,7 @@ spinner = inject(NgxSpinnerService)
 
     intentarLetra(letra:string){
       
-      if(this.palabra.includes(letra)){
+      if(this.palabra.includes(letra) && this.incorrectos<6){
         let indices = []
         let indice;
         do{
@@ -68,26 +72,42 @@ spinner = inject(NgxSpinnerService)
           this.exitosos++
       }else{
         this.incorrectos++
+        this.imagenAhorcado = this.scrAhorcado+"."+this.incorrectos+".jpg"
+  
       }
       this.estadoJuego()
     }
 
-    agregarLetras(letraIn:string,index:any){
+    agregarLetras(letraIn:string,index:any,incorrectos?:boolean){
       for(let i=0;i<index.length;i++){
         const letra=document.createElement('p')
         letra.textContent= letraIn.toUpperCase()
         letra.style.margin='0'
+        if(incorrectos)letra.style.color = "red"
         this.contenedorLetras[index[i]].appendChild(letra)
 
       }
     }
 
     estadoJuego(){
-      if(this.incorrectos == 5){
+      if(this.incorrectos == 6){
         document.getElementById('teclado')?.classList.add('hide')
+        this.finJuego=true
+        let arrayAux=[];
+        for (const char of this.palabra) {
+          arrayAux.push(char);
+        }
+        arrayAux.forEach((value,index)=>{
+          if(value!== " "){
+            let indexAux =[]
+            indexAux.push(index)
+            this.agregarLetras(value,indexAux,true)
+          }
+        })
       }
       if(this.palabra.trim().length==0){
         document.getElementById('teclado')?.classList.add('hide')
+        this.finJuego=true
         //ganaste
       }
     }
