@@ -1,0 +1,82 @@
+.contenedorRuleta{
+    height: auto;
+    width: 400px;
+    justify-content: center;
+    align-items: center;  
+    position: relative;
+    overflow: hidden;
+}
+
+.infoJuego, .pregunta{
+    position: relative;
+
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    overflow: hidden;
+    flex-direction: column;
+   transition: height 0.2s ease;
+   top: 0;
+   margin: 10px;
+   color: aliceblue;
+}
+
+
+.infoJuego{
+    margin-top: 50px;
+    height: 100px;
+    width: 500px;
+}
+ .pregunta{
+    display: flex;
+    flex-direction: row;
+    height: 450px;
+    width: 900px;
+    padding: 10px;
+}
+
+h2, h4{
+    text-decoration: underline;
+}
+
+.contenedor, .contenedorPregunta{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.imagenPregunta, .contenedorPregunta{
+    width: 50%;
+    margin: 30px;
+}
+
+.contenedorPregunta{
+
+}
+
+app-button-custom{
+    width: 100%;
+}
+
+img{
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+    max-width: 400px;
+    max-height: 400px
+}
+
+.correcta{
+    color: lawngreen;
+}
+.incorrecta{
+    color: brown;
+
+}

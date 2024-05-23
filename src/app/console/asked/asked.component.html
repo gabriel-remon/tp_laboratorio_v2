@@ -1,1 +1,28 @@
 <app-nav-bar></app-nav-bar>
+<div class="contenedor">
+    
+    <div class="infoJuego">
+        <h2>Preguntados</h2>
+        <h3>Score: <strong>{{score}}</strong> - cantidad de vidas restantes: <strong>{{vidas}}</strong></h3>
+    </div>
+    
+    <div class="pregunta"*ngIf="srcImagen && pregunta && !finJuego">
+        <div class="contenedorPregunta">
+            <h4>Tipo de pregunta: <strong>{{categoriaPregunta}}</strong></h4>
+            <p>{{pregunta.pregunta}}</p>
+            <p *ngIf="!resultado && !jugando"><strong class="incorrecta">Respuesta incorrecta</strong></p>
+            <p *ngIf="resultado && !jugando"><strong class="correcta">Respuesta correcta</strong></p>
+            <app-button-custom *ngFor="let item of opciones" [text]="item" (click)="responderPregunta(item)"  [disabled]="!jugando"></app-button-custom>
+        </div>
+
+        <div class="imagenPregunta">
+            <img [src]="srcImagen" alt="imagen de la categoria seleccionada">
+        </div>
+    </div>
+    
+    <div class="contenedorRuleta">
+        <app-ruleta (cartaElegida)="conseguirPregunta($event)" *ngIf="!(srcImagen && pregunta) && !finJuego"></app-ruleta>
+    </div>
+
+    <app-button-custom text="reiniciar" (click)="resetGame()" *ngIf="finJuego"></app-button-custom>
+</div>

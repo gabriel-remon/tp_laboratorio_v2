@@ -42,11 +42,12 @@ export class AuthFirebaseService  {
         if (user) {
           this.user=user
           this.userSubject.next(user); 
-          console.log("Bienvenido");
+          
+
+          console.log(user);
         } else {
           this.user=null
           this.userSubject.next(null); 
-          console.log("El usuario no está logueado");
         }
       },
       (error) => {
@@ -70,6 +71,7 @@ export class AuthFirebaseService  {
       this.user=res.user
       this.userSubject.next(res.user);
       this.fireStore.addNewLogin(res.user.uid)
+      
     if(calback)calback()
   }).catch(err=>{
     this.toast.error(err.message,"Error")

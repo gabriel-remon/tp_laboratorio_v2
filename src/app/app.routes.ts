@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { ErrorComponent } from './home/error/error.component';
+import { authGuard } from './core/guards/auth.guard';
+import { noAuthGuard } from './core/guards/no-auth.guard';
 
 export const routes: Routes = [
     {
@@ -8,11 +10,13 @@ export const routes: Routes = [
     },
     {
         path: 'auth',
-        loadChildren: ()=> import('./auth/auth.routes').then(m=>m.auth_routes)
+        loadChildren: ()=> import('./auth/auth.routes').then(m=>m.auth_routes),
+        canActivate:[noAuthGuard]
     },
     {
         path: 'games',
-        loadChildren: ()=> import('./console/console.routes').then(m=>m.console_routes)
+        loadChildren: ()=> import('./console/console.routes').then(m=>m.console_routes),
+        canActivate:[authGuard]
     },
     {
         path: '**',

@@ -1,0 +1,20 @@
+
+
+.vara {
+    height: 60px;
+    width: 3%;
+    background-color: #aaa;
+    margin: auto;
+    position: relative;
+    top: 35px;
+    border-radius: 0px 0px 8px 8px;
+    border: 1px solid #000;
+    border-top: 5px solid #000;
+    z-index: 1000;
+}
+
+img {
+    z-index: 100;
+    transition: all 5s;
+}
+
